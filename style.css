@@ -11,9 +11,7 @@ html, body {
   touch-action: none;
 }
 
-.hidden {
-  display: none !important;
-}
+.hidden { display: none !important; }
 
 #startScreen {
   position: fixed;
@@ -30,16 +28,12 @@ html, body {
 
 #startScreen img#startImage {
   display: block;
-  margin: 0 auto 20px auto;
+  margin-bottom: 20px;
   max-width: 80%;
   height: auto;
 }
 
-#game {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-}
+#game { position: fixed; inset:0; overflow: hidden; }
 
 #viewport {
   position: absolute;
@@ -48,91 +42,31 @@ html, body {
   transform-origin: top left;
 }
 
-#bg-far, #bg-mid, #bg-front {
-  position: absolute;
-  width: 7200px;
-  height: 320px;
-}
+#bg-far, #bg-mid, #bg-front { position: absolute; width: 7200px; height: 320px; }
+#bg-far { background: url("images/background/far.png") repeat-x; z-index:0; }
+#bg-mid { background: url("images/background/mid.png") repeat-x; z-index:1; }
+#bg-front { background: url("images/background/front.png") repeat-x; z-index:2; }
 
-#bg-far {
-  background: url("images/background/far.png") repeat-x;
-  z-index: 0;
-}
-
-#bg-mid {
-  background: url("images/background/mid.png") repeat-x;
-  z-index: 1;
-}
-
-#bg-front {
-  background: url("images/background/front.png") repeat-x;
-  z-index: 2;
-}
-
-#car {
-  position: absolute;
-  bottom: 0;
-  z-index: 3;
-}
-
-#doorsLayer {
-  position: absolute;
-  bottom: 0;
-  width: 7200px;
-  height: 320px;
-  z-index: 6;
-  image-rendering: pixelated;
-}
-
-#player {
-  position: absolute;
-  bottom: 0;
-  height: 128px;
-  z-index: 5;
-  image-rendering: pixelated;
-}
+#car { position:absolute; bottom:0; z-index:3; }
+#doorsLayer { position:absolute; bottom:0; width:7200px; height:320px; z-index:6; image-rendering:pixelated; }
+#player { position:absolute; bottom:0; height:128px; z-index:5; image-rendering:pixelated; }
 
 #controls {
-  position: fixed;
-  bottom: 10px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-around;
-  z-index: 20;
+  position: fixed; bottom:10px; left:0; right:0; display:flex; justify-content:space-around; z-index:20;
 }
-
-#controls button {
-  font-size: 32px;
-  padding: 10px 20px;
-}
+#controls button { font-size:32px; padding:10px 20px; }
 
 #barScreen {
-  position: fixed;
-  inset: 0;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  position: fixed; inset:0; background:black; display:flex; justify-content:center; align-items:center; flex-direction:column;
 }
-
 #barScreen img#barImg {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  max-width:100%; max-height:100%; object-fit:contain;
 }
-
+#barText {
+  position:absolute; top:20px; width:90%; color:white; font-size:18px; text-align:center; z-index:20;
+}
 #barUI {
-  position: absolute;
-  bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  position:absolute; bottom:10px; display:flex; flex-direction:column; align-items:center; gap:10px;
 }
-
-#barUI input, #barUI button {
-  font-size: 18px;
-  padding: 5px 10px;
-}
+#barUI input, #barUI button { font-size:18px; padding:5px 10px; }
+#goToCounter, #lookTable { font-size:18px; padding:5px 10px; margin-top:10px; }
