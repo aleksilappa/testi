@@ -11,11 +11,10 @@ const controls = document.getElementById("controls");
 const clock = document.getElementById("clock");
 const music = document.getElementById("music");
 
-// Kentän rajat
 const WORLD_LEFT = 0;
-const WORLD_RIGHT = 2200; // koko kenttä ~1 min kävely
+const WORLD_RIGHT = 2200;
 
-let playerX = WORLD_LEFT; // pelaajan maailmankoordinaatti
+let playerX = WORLD_LEFT;
 let movingLeft = false;
 let movingRight = false;
 let walkFrame = 0;
@@ -61,33 +60,33 @@ document.getElementById("rightBtn").ontouchend = () => movingRight = false;
 
 // -------- UPDATE LOOP --------
 function update() {
-  const speed = 2; // hidas kävely (~1 min kentän leveys)
+  const speed = 2;
   let walking = false;
 
+  // Hahmon liike
   if (movingRight) { playerX += speed; facing = "right"; walking = true; }
   if (movingLeft)  { playerX -= speed; facing = "left";  walking = true; }
 
-  // KIINTEÄT RAJAT
+  // Maailman rajat
   if (playerX < WORLD_LEFT) playerX = WORLD_LEFT;
   if (playerX > WORLD_RIGHT) playerX = WORLD_RIGHT;
 
-  // ---------- Kamera & viewport ----------
-  // Hahmo pysyy aina keskellä, paitsi kentän reunoissa
+  // Kamera seuraa hahmoa
   let viewportX = playerX - 568 / 2;
   if (viewportX < 0) viewportX = 0;
   if (viewportX > WORLD_RIGHT - 568) viewportX = WORLD_RIGHT - 568;
   viewport.style.left = -viewportX + "px";
 
-  // Hahmo keskelle ruutua
-  player.style.left = "50%";
-  player.style.transform = "translateX(-50%)";
+  // Hahmo pysyy keskellä
+  const screenCenter = 568 / 2 - player.width / 2;
+  player.style.left = screenCenter + "px";
 
-  // ---------- Parallax ----------
+  // Parallax
   bgFar.style.backgroundPositionX = -playerX * 0.3 + "px";
   bgMid.style.backgroundPositionX = -playerX * 0.6 + "px";
   bgFront.style.backgroundPositionX = -playerX * 1.0 + "px";
 
-  // ---------- Kävelyanimaatio idle-välillä ----------
+  // Kävelyanimaatio idle-välissä
   if (walking) {
     walkFrame++;
     const frame = Math.floor(walkFrame / 10) % 4;
