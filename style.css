@@ -25,13 +25,20 @@ html, body {
   justify-content: center;
   align-items: center;
   z-index: 10;
+  text-align: center;
+}
+
+#startScreen img#startImage {
+  display: block;
+  margin: 0 auto 20px auto;
+  max-width: 80%;
+  height: auto;
 }
 
 #game {
   position: fixed;
   inset: 0;
   overflow: hidden;
-  display: block;
 }
 
 #viewport {
@@ -43,13 +50,39 @@ html, body {
 
 #bg-far, #bg-mid, #bg-front {
   position: absolute;
-  width: 7200px; /* kenttä ~1 min kävely */
+  width: 7200px;
   height: 320px;
 }
 
-#bg-far { background: url("images/background/far.png") repeat-x; z-index: 0; }
-#bg-mid { background: url("images/background/mid.png") repeat-x; z-index: 1; }
-#bg-front { background: url("images/background/front.png") repeat-x; z-index: 2; }
+#bg-far {
+  background: url("images/background/far.png") repeat-x;
+  z-index: 0;
+}
+
+#bg-mid {
+  background: url("images/background/mid.png") repeat-x;
+  z-index: 1;
+}
+
+#bg-front {
+  background: url("images/background/front.png") repeat-x;
+  z-index: 2;
+}
+
+#car {
+  position: absolute;
+  bottom: 0;
+  z-index: 3;
+}
+
+#doorsLayer {
+  position: absolute;
+  bottom: 0;
+  width: 7200px;
+  height: 320px;
+  z-index: 6;
+  image-rendering: pixelated;
+}
 
 #player {
   position: absolute;
@@ -57,12 +90,6 @@ html, body {
   height: 128px;
   z-index: 5;
   image-rendering: pixelated;
-}
-
-#workDoor, #pubDoor, #car {
-  position: absolute;
-  bottom: 0;
-  z-index: 3;
 }
 
 #controls {
@@ -78,4 +105,34 @@ html, body {
 #controls button {
   font-size: 32px;
   padding: 10px 20px;
+}
+
+#barScreen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#barScreen img#barImg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+#barUI {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#barUI input, #barUI button {
+  font-size: 18px;
+  padding: 5px 10px;
 }

@@ -8,32 +8,42 @@
 </head>
 <body>
 
+<!-- Alkunäyttö -->
 <div id="startScreen">
-  <h1>Synttäripeli</h1>
-  <p>Käännä puhelin vaakaan</p>
+  <img id="startImage" src="images/start/start.png" alt="Aloituskuva" style="max-width:300px; height:auto; margin-bottom:20px;">
+  <p>Pidä puhelin pystysuorassa</p>
   <button id="startBtn">Aloita</button>
 </div>
 
+<!-- Peli -->
 <div id="game" class="hidden">
   <div id="viewport">
-    <!-- Parallax-taustat -->
+
     <div id="bg-far"></div>
     <div id="bg-mid"></div>
     <div id="bg-front"></div>
 
-    <!-- Objektit -->
-    <img id="workDoor" src="images/objects/work_door.png">
-    <img id="pubDoor" src="images/objects/pub_door.png">
     <img id="car" src="images/objects/car.png">
-
-    <!-- Pelaaja -->
+    <img id="doorsLayer" src="images/objects/doors.png">
     <img id="player" src="images/character/idle_right.png">
+
   </div>
 </div>
 
 <div id="controls" class="hidden">
   <button id="leftBtn">◀</button>
   <button id="rightBtn">▶</button>
+</div>
+
+<!-- Baarielementit -->
+<div id="barScreen" class="hidden">
+  <img id="barImg" src="">
+  <button id="goToCounter" class="hidden">Tiskille</button>
+  <div id="barUI" class="hidden">
+    <input id="orderInput" type="text" placeholder="Kirjoita tilaus">
+    <button id="submitOrder">Tilaa</button>
+    <p id="barResponse"></p>
+  </div>
 </div>
 
 <audio id="clock" src="audio/clock.mp3"></audio>
