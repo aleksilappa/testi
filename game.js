@@ -24,7 +24,7 @@ const submitOrder = document.getElementById("submitOrder");
 const barResponse = document.getElementById("barResponse");
 
 const WORLD_LEFT = 0;
-const WORLD_RIGHT = 7200 - 800;
+const WORLD_RIGHT = 7200 - 700;
 const VIEWPORT_WIDTH = 568;
 let playerX = WORLD_LEFT;
 let movingLeft = false;
@@ -181,3 +181,4 @@ function update(){
 }
 
 update();
+
