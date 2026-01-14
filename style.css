@@ -5,7 +5,6 @@ html, body {
   height: 100%;
   overflow: hidden;
   background: black;
-
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -44,7 +43,7 @@ html, body {
 
 #bg-far, #bg-mid, #bg-front {
   position: absolute;
-  width: 2000px;
+  width: 2200px; /* koko kenttä */
   height: 320px;
 }
 
@@ -55,8 +54,9 @@ html, body {
 #player {
   position: absolute;
   bottom: 0;
-  height: 128px; /* ~40 % ruudusta */
-  left: 0;
+  height: 128px; 
+  left: 50%; /* keskitetään alussa */
+  transform: translateX(-50%);
   z-index: 5;
   image-rendering: pixelated;
 }
