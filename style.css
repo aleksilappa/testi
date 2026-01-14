@@ -55,8 +55,6 @@ html, body {
   position: absolute;
   bottom: 0;
   height: 128px; 
-  left: 50%; /* keskitetään alussa */
-  transform: translateX(-50%);
   z-index: 5;
   image-rendering: pixelated;
 }
