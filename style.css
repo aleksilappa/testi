@@ -141,16 +141,17 @@ button:active {
   position: fixed;
   inset: 0;
   background: black;
-
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* kuva ylös */
 }
+
 
 #barImg {
   width: 100vw;
   height: 100vh;
   object-fit: contain;
+  object-position: top center; /* 👈 tärkeä */
 }
 
 /* =========================
@@ -172,7 +173,7 @@ button:active {
 
 #barUI input {
   font-family: 'Press Start 2P', monospace;
-  font-size: 14px;
+  font-size: 12px;
 
   padding: 10px;
   width: 240px;
@@ -207,7 +208,7 @@ button:active {
   max-width: 90vw;
 
   font-family: 'Press Start 2P', monospace;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.6;
   text-align: center;
 
