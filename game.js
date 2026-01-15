@@ -14,6 +14,7 @@ const rightBtn = document.getElementById("rightBtn");
 
 const clock = document.getElementById("clock");
 const music = document.getElementById("music");
+const correctSound = document.getElementById("correctSound");
 
 const barScreen = document.getElementById("barScreen");
 const barImg = document.getElementById("barImg");
@@ -178,27 +179,45 @@ submitOrder.onclick = () => {
   const hasBeer =
     t.includes("4chiefs-lager") ||
     t.includes("4chiefslager") ||
-    t.includes("4chiefs lager");
+    t.includes("4chiefs");
 
   if (!has6 && !hasBeer) {
     typeText("Eihän sellaista kukaan juo!", "#ffd700");
-  } else if (!has6 || !hasBeer) {
+    return;
+  }
+
+  if (!has6 || !hasBeer) {
     typeText("Joo, melkein, mutta joku tässä vielä mättää.", "#ffd700");
-  } else {
+    return;
+  }
+
+  /* =========================
+     OIKEA VASTAUS
+  ========================= */
+
+  // Soita ääni
+  correctSound.currentTime = 0;
+  correctSound.play().catch(() => {});
+
+  // Näytä viimeinen repliikki
+  typeText("Selvä! Tuon juomat pöytään.", "#ffd700");
+
+  // Piilota napit heti (ettei voi enää painaa)
+  submitOrder.classList.add("hidden");
+  lookAtTableBtn.classList.add("hidden");
+
+  // ODOTA 4 SEKUNTIA, SITTEN FADE + BAR3
+  setTimeout(() => {
     fadeOut(() => {
       barUI.classList.add("hidden");
-      submitOrder.classList.add("hidden");
-      lookAtTableBtn.classList.add("hidden");
-
+      barResponse.textContent = "";
       barImg.src = "images/bar/bar3.png";
-
-      fadeIn(() => {
-        barResponse.textContent = "";
-        music.loop = false;
-      });
+      music.loop = false;
+      fadeIn();
     });
-  }
+  }, 4000);
 };
+
 
 /* UPDATE LOOP */
 function update() {
