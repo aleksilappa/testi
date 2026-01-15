@@ -189,7 +189,7 @@ submitOrder.onclick = () => {
   const t = orderInput.value.toLowerCase();
   const has6 = t.includes("6") || t.includes("kuusi");
   const hasBeer =
-    t.includes("4chiefs-lager") || t.includes("4chiefslager") || t.includes("4chiefs");
+    t.includes("4chiefs-lager") || t.includes("4chiefslager") || t.includes("4chiefs lager") || t.includes("4 chiefs lager") || t.includes("4 chiefslager") || t.includes("4 chiefs-lager") || t.includes("4 chiefs -lager");
 
   if (!has6 && !hasBeer) {
     typeText("Eihän sellaista kukaan juo!", "#ffd700");
