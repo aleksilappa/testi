@@ -234,9 +234,10 @@ function update() {
     playerX = Math.max(WORLD_LEFT, Math.min(WORLD_RIGHT, playerX));
 
     if (playerX >= PUB_DOOR_X && !enteringPub) {
-      enteringPub = true;
-      setTimeout(enterPub, 2000);
-    }
+  enteringPub = true;
+  enterPub(); // kutsutaan heti, ei odotusta
+}
+
   }
 
   player.style.left = VIEWPORT_WIDTH / 2 - player.width / 2 + "px";
