@@ -1,3 +1,39 @@
+const imageCache = {};
+
+function preloadImages(paths, callback) {
+  let loaded = 0;
+
+  paths.forEach(path => {
+    const img = new Image();
+    img.src = path;
+    imageCache[path] = img;
+
+    img.onload = () => {
+      loaded++;
+      if (loaded === paths.length && callback) {
+        callback();
+      }
+    };
+  });
+}
+const imagesToPreload = [
+  // BAR
+  "images/bar/bar1.png",
+  "images/bar/bar2.png",
+  "images/bar/bar3.png",
+
+  // PLAYER IDLE
+  "images/character/idle_left.png",
+  "images/character/idle_right.png",
+
+  // PLAYER WALK
+  "images/character/walk_left_1.png",
+  "images/character/walk_left_2.png",
+  "images/character/walk_right_1.png",
+  "images/character/walk_right_2.png"
+];
+
+
 const viewport = document.getElementById("viewport");
 const player = document.getElementById("player");
 const bgFar = document.getElementById("bg-far");
@@ -102,15 +138,22 @@ function typeText(text, color) {
 
 /* START */
 startBtn.onclick = () => {
-  startScreen.classList.add("hidden");
-  document.getElementById("game").classList.remove("hidden");
-  clock.play().catch(() => {});
-  clock.onended = () => {
-    music.play().catch(() => {});
-    controls.classList.remove("hidden");
-    gameStarted = true;
-  };
+  startBtn.disabled = true;
+  startBtn.textContent = "Ladataan...";
+
+  preloadImages(imagesToPreload, () => {
+    startScreen.classList.add("hidden");
+    document.getElementById("game").classList.remove("hidden");
+
+    clock.play().catch(() => {});
+    clock.onended = () => {
+      music.play().catch(() => {});
+      controls.classList.remove("hidden");
+      gameStarted = true;
+    };
+  });
 };
+
 
 /* CONTROLS */
 document.addEventListener("keydown", e => {
