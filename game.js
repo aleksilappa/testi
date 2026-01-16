@@ -183,6 +183,24 @@ lookAtTableBtn.onclick = () => {
     });
   });
 };
+const wrongOrderReplies = [
+  "Eihän sellaista kukaan juo!",
+  "Kuulostaa pahalta, kokeillaan uudestaan.",
+  "On meillä parempaakin tarjolla!",
+  "Tuo ei taida olla listalla...",
+  "Oletko varma, että tuo on juoma?"
+];
+
+const almostRightReplies = [
+  "Joo, melkein, mutta joku tässä vielä mättää.",
+  "Aika lähellä, mutta ei ihan.",
+  "Yksi asia puuttuu vielä.",
+  "Nyt ollaan oikeilla jäljillä."
+];
+
+function randomReply(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
 /* TILAUSLOGIIKKA */
 submitOrder.onclick = () => {
@@ -192,14 +210,15 @@ submitOrder.onclick = () => {
     t.includes("4chiefs-lager") || t.includes("4chiefslager") || t.includes("4chiefs -lager") || t.includes("4chiefs lager") || t.includes("4 chiefs lager") || t.includes("4 chiefslager") || t.includes("4 chiefs-lager") || t.includes("4 chiefs -lager");
 
   if (!has6 && !hasBeer) {
-    typeText("Eihän sellaista kukaan juo!", "#ffd700");
-    return;
-  }
+  typeText(randomReply(wrongOrderReplies), "#ffd700");
+  return;
+}
 
-  if (!has6 || !hasBeer) {
-    typeText("Joo, melkein, mutta joku tässä vielä mättää.", "#ffd700");
-    return;
-  }
+if (!has6 || !hasBeer) {
+  typeText(randomReply(almostRightReplies), "#ffd700");
+  return;
+}
+
 
   /* =========================
      OIKEA VASTAUS
